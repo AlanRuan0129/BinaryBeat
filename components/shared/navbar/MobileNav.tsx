@@ -81,13 +81,13 @@ const MobileNav = () => {
             Life <span className="text-primary-500">Puzzle</span>
           </p>
         </Link>
-        <div>
+        <div className="flex h-full flex-col ">
           <SheetClose asChild>
             <NavContent />
           </SheetClose>
 
           <SignedOut>
-            <div className="mt-[3.5rem] flex flex-col gap-3">
+            <div className="mb-[3rem] flex flex-col gap-3">
               <SheetClose asChild>
                 <Link href="/sign-in">
                   <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
