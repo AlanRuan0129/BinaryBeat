@@ -1,5 +1,8 @@
-import { ToggleGroupDemo } from '@/components/shared/HomeMenu';
+import Filter from '@/components/shared/Filter';
+import { ToggleGroupDemo } from '@/components/home/HomeMenu';
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
+import { HomePageFilters } from '@/constants/filters';
+import HomeFilters from '@/components/home/HomeFilters';
 
 export default function Home() {
   return (
@@ -15,8 +18,14 @@ export default function Home() {
           placeholder="Search for topics"
           otherClasses="flex-1"
         />
-        {/* Filters */}
+        <Filter
+          filters={HomePageFilters}
+          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          containerClasses="hidden max-md:flex"
+        />
       </div>
+
+      <HomeFilters />
     </>
   );
 }
