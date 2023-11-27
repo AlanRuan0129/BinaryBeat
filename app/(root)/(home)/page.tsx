@@ -3,7 +3,36 @@ import { ToggleGroupDemo } from '@/components/home/HomeMenu';
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
 import { HomePageFilters } from '@/constants/filters';
 import HomeFilters from '@/components/home/HomeFilters';
+import NoResult from '@/components/shared/NoResult';
 
+const topics = [
+  // {
+  //   id: 1,
+  //   title: 'Spiderman',
+  //   tags: [
+  //     { _id: 1, name: 'Marvel' },
+  //     { _id: 2, name: 'Superhero' },
+  //   ],
+  //   author: 'John Doe',
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 5,
+  //   createdAt: '2021-09-06T13:00:00.000Z',
+  // },
+  // {
+  //   id: 2,
+  //   title: 'Ironman',
+  //   tags: [
+  //     { _id: 1, name: 'Marvel' },
+  //     { _id: 2, name: 'Superhero' },
+  //   ],
+  //   author: 'John Doe',
+  //   upvotes: 10,
+  //   views: 100,
+  //   answers: 5,
+  //   createdAt: '2021-09-06T13:00:00.000Z',
+  // },
+];
 export default function Home() {
   return (
     <>
@@ -26,6 +55,19 @@ export default function Home() {
       </div>
 
       <HomeFilters />
+
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {topics.length > 0 ? (
+          topics.map((topic) => 'TopicCard')
+        ) : (
+          <NoResult
+            title="No Topic To Show"
+            description="Don't miss out on the hype! 🌟 Start the conversation, ask anything, and let your curiosity lead the way. Your questions might just spark the next viral wave. Dive in! 💫"
+            link="/upload"
+            linkTitle="Upload You First Topic"
+          />
+        )}
+      </div>
     </>
   );
 }
