@@ -17,6 +17,11 @@ export const sidebarLinks: SidebarLink[] = [
     label: 'Home',
   },
   {
+    imgURL: '/assets/icons/question.svg',
+    route: '/ask-question',
+    label: 'Ask a question',
+  },
+  {
     imgURL: '/assets/icons/users.svg',
     route: '/community',
     label: 'Community',
@@ -40,11 +45,6 @@ export const sidebarLinks: SidebarLink[] = [
     imgURL: '/assets/icons/user.svg',
     route: '/profile',
     label: 'Profile',
-  },
-  {
-    imgURL: '/assets/icons/question.svg',
-    route: '/ask-question',
-    label: 'Ask a question',
   },
 ];
 
