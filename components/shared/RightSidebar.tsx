@@ -6,33 +6,33 @@ import RenderTag from './RenderTag';
 const RightSidebar = async () => {
   const hotQuestions = [
     {
-      _id: 1,
+      _id: '1',
       title: 'Director Unveils Sci-Fi Trilogy, Promises Spectacle.',
     },
     {
-      _id: 2,
+      _id: '2',
       title: 'Pop Star Previews Album with New Single.',
     },
     {
-      _id: 3,
+      _id: '3',
       title: 'ction Film Breaks Opening Weekend Records.',
     },
     {
-      _id: 4,
+      _id: '4',
       title: 'Star to Portray Music Legend in Biopic.',
     },
     {
-      _id: 5,
+      _id: '5',
       title: 'Chef Opens Global Fusion Restaurant.',
     },
   ];
 
   const popularTags = [
-    { _id: 1, name: 'Movies', totalQuestions: 8 },
-    { _id: 2, name: 'Shopping', totalQuestions: 6 },
-    { _id: 3, name: 'Gaming', totalQuestions: 9 },
-    { _id: 4, name: 'Travel', totalQuestions: 7 },
-    { _id: 5, name: 'Food', totalQuestions: 5 },
+    { _id: '1', name: 'Movies', totalQuestions: 8 },
+    { _id: '2', name: 'Shopping', totalQuestions: 6 },
+    { _id: '3', name: 'Gaming', totalQuestions: 9 },
+    { _id: '4', name: 'Travel', totalQuestions: 7 },
+    { _id: '5', name: 'Food', totalQuestions: 5 },
   ];
 
   return (

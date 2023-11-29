@@ -17,11 +17,6 @@ export const sidebarLinks: SidebarLink[] = [
     label: 'Home',
   },
   {
-    imgURL: '/assets/icons/upvote.svg',
-    route: '/upload',
-    label: 'Upload',
-  },
-  {
     imgURL: '/assets/icons/users.svg',
     route: '/community',
     label: 'Community',
