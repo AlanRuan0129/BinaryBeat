@@ -1,7 +1,7 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { Editor } from '@tinymce/tinymce-react';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
@@ -19,8 +19,11 @@ import { QuestionsSchema } from '@/lib/validations';
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
 
+const type: any = 'create';
+
 const Question = () => {
   const editorRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
@@ -31,7 +34,15 @@ const Question = () => {
     },
   });
   function onSubmit(values: z.infer<typeof QuestionsSchema>) {
-    console.log(values);
+    setIsSubmitting(true);
+    try {
+      // make an async call to your API -> craete a question
+      // contain all form data
+      // navigae to home page
+    } catch (error) {
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const handleInputKeyDown = (
@@ -72,7 +83,7 @@ const Question = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-10"
+        className="flex w-full flex-col items-center justify-center gap-10"
       >
         <FormField
           control={form.control}
@@ -141,6 +152,8 @@ const Question = () => {
                       'removeformat | image',
                     content_style:
                       'body { font-family:Inter; font-size:16px }',
+                    images_upload_url:
+                      'URL_TO_YOUR_IMAGE_UPLOAD_HANDLER',
                   }}
                 />
               </FormControl>
@@ -199,7 +212,19 @@ const Question = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          className="primary-gradient w-fit  !text-light-900"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>{type === 'Edit' ? 'Editing...' : 'Posting...'}</>
+          ) : (
+            <>
+              {type === 'Edit' ? 'Edit Question' : 'Ask a Question'}
+            </>
+          )}
+        </Button>
       </form>
     </Form>
   );
