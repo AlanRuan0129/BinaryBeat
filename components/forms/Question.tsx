@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Editor } from '@tinymce/tinymce-react';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
@@ -19,12 +19,19 @@ import { QuestionsSchema } from '@/lib/validations';
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import { createQuestion } from '@/lib/actions/question.action';
+import { useRouter, usePathname } from 'next/navigation';
 
 const type: any = 'create';
 
-const Question = () => {
+interface Props {
+  mongoUserId: string;
+}
+
+const Question = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
@@ -37,10 +44,14 @@ const Question = () => {
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
-      // make an async call to your API -> craete a question
-      // contain all form data
-      // navigae to home page
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: pathname,
+      });
+      router.push('/');
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -120,7 +131,7 @@ const Question = () => {
                 <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
-                <Editor
+                {/* <Editor
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onInit={(evt, editor) => {
                     // @ts-ignore
@@ -132,6 +143,8 @@ const Question = () => {
                   }
                   initialValue=""
                   init={{
+                    // @ts-ignore
+                    selector: 'textarea#file-picker',
                     height: 350,
                     menubar: false,
                     plugins: [
@@ -150,16 +163,93 @@ const Question = () => {
                       'media',
                       'table',
                       'preview',
+                      'image code',
                     ],
                     toolbar:
                       'undo redo | blocks | ' +
                       'codesample | bold italic forecolor | alignleft aligncenter ' +
                       'alignright alignjustify | bullist numlist' +
-                      'removeformat | image',
+                      'removeformat | link image | code',
                     content_style:
                       'body { font-family:Inter; font-size:16px }',
-                    images_upload_url:
-                      'URL_TO_YOUR_IMAGE_UPLOAD_HANDLER',
+                    image_title: true,
+                    automatic_uploads: true,
+                    file_picker_types: 'image',
+                      file_picker_callback: function (cb, value, meta) {
+                        const input = document.createElement('input');
+                        input.setAttribute('type', 'file');
+                        input.setAttribute('accept', 'image/*');
+                        input.onchange = function () {
+                          const file = input.files![0];
+
+                          const reader = new FileReader();
+                          reader.onload = function () {
+                            const id = 'blobid' + new Date().getTime();
+                            const blobCache =
+                              // @ts-ignore
+                              window.tinymce.activeEditor.editorUpload
+                                .blobCache;
+
+                            const base64 = (
+                              reader.result as string
+                            ).split(',')[1];
+                            const blobInfo = blobCache.create(
+                              id,
+                              file,
+                              base64
+                            );
+                            blobCache.add(blobInfo);
+
+                            cb(blobInfo.blobUri(), {
+                              title: file.name,
+                            });
+                          };
+                          reader.readAsDataURL(file);
+                        };
+
+                        input.click();
+                      },
+                  }}
+                /> */}
+                <Editor
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                  onInit={(evt, editor) => {
+                    // @ts-ignore
+                    editorRef.current = editor;
+                  }}
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) =>
+                    field.onChange(content)
+                  }
+                  // initialValue={parsedQuestionDetails?.content || ''}
+                  init={{
+                    height: 350,
+                    menubar: false,
+                    plugins: [
+                      'advlist',
+                      'autolink',
+                      'lists',
+                      'link',
+                      'image',
+                      'charmap',
+                      'preview',
+                      'anchor',
+                      'searchreplace',
+                      'visualblocks',
+                      'codesample',
+                      'fullscreen',
+                      'insertdatetime',
+                      'media',
+                      'table',
+                    ],
+                    toolbar:
+                      'undo redo | ' +
+                      'codesample | bold italic forecolor | alignleft aligncenter |' +
+                      'alignright alignjustify | bullist numlist',
+                    content_style:
+                      'body { font-family:Inter; font-size:16px }',
+                    // skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
+                    // content_css: mode === 'dark' ? 'dark' : 'light',
                   }}
                 />
               </FormControl>
