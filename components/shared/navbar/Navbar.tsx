@@ -5,6 +5,7 @@ import React from 'react';
 import Theme from './Theme';
 import MobileNav from './MobileNav';
 import GlobalSearch from '../search/GlobalSearch';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   return (
@@ -22,6 +23,14 @@ const Navbar = () => {
       </Link>
       <GlobalSearch />
       <div className="flex-between gap-5">
+        <Link
+          href="/ask-question"
+          className="flex justify-end max-sm:w-full"
+        >
+          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+            Ask a Question
+          </Button>
+        </Link>
         <Theme />
         <SignedIn>
           <UserButton
