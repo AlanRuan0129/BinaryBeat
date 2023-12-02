@@ -1,9 +1,9 @@
 import UserCard from '@/components/cards/UserCard';
 import Filter from '@/components/shared/Filter';
+import NoResult from '@/components/shared/NoResult';
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
 import { UserFilters } from '@/constants/filters';
 import { getAllUsers } from '@/lib/actions/user.action';
-import Link from 'next/link';
 
 const Page = async () => {
   const result = await getAllUsers({});
@@ -34,13 +34,12 @@ const Page = async () => {
           ))
         ) : (
           <div className="paragraph-regular text-dark200_light800 mx-auto max-w-4xl text-center">
-            <p>No users yet</p>
-            <Link
-              href="/sign-up"
-              className="mt-2 font-bold text-accent-blue"
-            >
-              Join to be the first!
-            </Link>
+            <NoResult
+              title="No Users Found"
+              description="It looks like there are no users found."
+              link="/sign-up"
+              linkTitle=" Join to be the first!"
+            />
           </div>
         )}
       </section>
