@@ -23,11 +23,8 @@ const Navbar = () => {
       </Link>
       <GlobalSearch />
       <div className="flex-between gap-5">
-        <Link
-          href="/ask-question"
-          className="flex justify-end max-sm:w-full"
-        >
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+        <Link href="/ask-question" className="flex justify-end">
+          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 max-sm:hidden">
             Ask a Question
           </Button>
         </Link>
