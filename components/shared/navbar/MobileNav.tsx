@@ -35,8 +35,8 @@ const NavContent = () => {
               <Image
                 src={item.imgURL}
                 alt={item.label}
-                width={20}
-                height={20}
+                width={15}
+                height={15}
                 className={`${isActive ? '' : 'invert-colors'}`}
               />
               <p
@@ -87,7 +87,7 @@ const MobileNav = () => {
           </SheetClose>
 
           <SignedOut>
-            <div className="mb-[3rem] flex flex-col gap-3">
+            <div className="mb-[7rem] flex flex-col gap-5">
               <SheetClose asChild>
                 <Link href="/sign-in">
                   <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
