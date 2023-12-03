@@ -1,6 +1,6 @@
-// import Answer from '@/components/forms/Answer';
+import Answer from '@/components/forms/Answer';
 import Metric from '@/components/shared/Metric';
-// import ParseHTML from '@/components/shared/ParseHTML';
+import ParseHTML from '@/components/shared/ParseHTML';
 import RenderTag from '@/components/shared/RenderTag';
 import { getQuestionById } from '@/lib/actions/question.action';
 import { formatAndDivideNumber, getTimestamp } from '@/lib/utils';
@@ -31,7 +31,7 @@ const Page = async ({ params, searchParams }) => {
               {result.author.name}
             </p>
           </Link>
-          <div className="flex justify-end">VOTING</div>
+          <div className="flex justify-end text-black">VOTING</div>
         </div>
         <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
           {result.title}
@@ -62,7 +62,7 @@ const Page = async ({ params, searchParams }) => {
         />
       </div>
 
-      {/* <ParseHTML data={result.content} /> */}
+      <ParseHTML data={result.content} />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {result.tags.map((tag: any) => (
@@ -75,7 +75,7 @@ const Page = async ({ params, searchParams }) => {
         ))}
       </div>
 
-      {/* <Answer /> */}
+      <Answer />
     </>
   );
 };

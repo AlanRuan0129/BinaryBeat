@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("../styles/theme.css");
+@import url('../styles/theme.css');
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 @layer utilities {
@@ -144,7 +144,11 @@ code {
 
 /* Clerk */
 .cl-internal-b3fm6y {
-  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;
+  background: linear-gradient(
+    129deg,
+    #ff7000 0%,
+    #e2995f 100%
+  ) !important;
 }
 
 .hash-span {
