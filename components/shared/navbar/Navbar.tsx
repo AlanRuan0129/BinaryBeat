@@ -17,7 +17,7 @@ const Navbar = () => {
           height={23}
           alt="LifePuzzle"
         />
-        <p className="h2-bold font-spaceGrotesk text-dark-100 dark:text-light-900 max-sm:hidden">
+        <p className="h2-bold font-spaceGrotesk text-dark-100 dark:text-light-900">
           Life <span className="text-primary-500">Puzzle</span>
         </p>
       </Link>

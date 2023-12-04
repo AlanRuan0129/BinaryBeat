@@ -18,7 +18,7 @@ export default async function Home() {
         <ToggleGroupDemo />
       </div>
 
-      <div className="flex w-full items-center  justify-center max-sm:w-full sm:hidden">
+      <div className="flex w-full items-center justify-center max-sm:w-full sm:hidden">
         <Link href="/ask-question" className="flex w-full">
           <Button className="primary-gradient min-h-[46px] w-full px-4 py-3 !text-light-900">
             Ask a Question
