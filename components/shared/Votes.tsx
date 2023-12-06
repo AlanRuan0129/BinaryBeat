@@ -1,17 +1,15 @@
-'use client';
-import {
-  downvoteAnswer,
-  upvoteAnswer,
-} from '@/lib/actions/answer.action';
+"use client";
+import { useEffect } from "react";
+import { viewQuestion } from "@/lib/actions/interaction.action";
+import { downvoteAnswer, upvoteAnswer } from "@/lib/actions/answer.action";
 import {
   upvoteQuestion,
   downvoteQuestion,
-} from '@/lib/actions/question.action';
-import { toggleSaveQuestion } from '@/lib/actions/user.action';
-import { formatAndDivideNumber } from '@/lib/utils';
-import Image from 'next/image';
-// import { usePathname, useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
+} from "@/lib/actions/question.action";
+import { toggleSaveQuestion } from "@/lib/actions/user.action";
+import { formatAndDivideNumber } from "@/lib/utils";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   type: string;
@@ -36,7 +34,7 @@ const Votes = ({
 }: Props) => {
   const pathname = usePathname();
 
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleSave = async () => {
     await toggleSaveQuestion({
@@ -51,8 +49,8 @@ const Votes = ({
       return;
     }
 
-    if (action === 'upvote') {
-      if (type === 'Question') {
+    if (action === "upvote") {
+      if (type === "Question") {
         await upvoteQuestion({
           questionId: JSON.parse(itemId),
           userId: JSON.parse(userId),
@@ -60,7 +58,7 @@ const Votes = ({
           hasdownVoted,
           path: pathname,
         });
-      } else if (type === 'Answer') {
+      } else if (type === "Answer") {
         await upvoteAnswer({
           answerId: JSON.parse(itemId),
           userId: JSON.parse(userId),
@@ -74,8 +72,8 @@ const Votes = ({
       return;
     }
 
-    if (action === 'downvote') {
-      if (type === 'Question') {
+    if (action === "downvote") {
+      if (type === "Question") {
         await downvoteQuestion({
           questionId: JSON.parse(itemId),
           userId: JSON.parse(userId),
@@ -83,7 +81,7 @@ const Votes = ({
           hasdownVoted,
           path: pathname,
         });
-      } else if (type === 'Answer') {
+      } else if (type === "Answer") {
         await downvoteAnswer({
           answerId: JSON.parse(itemId),
           userId: JSON.parse(userId),
@@ -97,6 +95,13 @@ const Votes = ({
     }
   };
 
+  useEffect(() => {
+    viewQuestion({
+      questionId: JSON.parse(itemId),
+      userId: userId ? JSON.parse(userId) : undefined,
+    });
+  }, [itemId, userId, pathname, router]);
+
   return (
     <div className="flex gap-5">
       <div className="flex-center gap-2.5">
@@ -104,14 +109,14 @@ const Votes = ({
           <Image
             src={
               hasupVoted
-                ? '/assets/icons/upvoted.svg'
-                : '/assets/icons/upvote.svg'
+                ? "/assets/icons/upvoted.svg"
+                : "/assets/icons/upvote.svg"
             }
             width={18}
             height={18}
             alt="upvote"
             className="cursor-pointer"
-            onClick={() => handleVote('upvote')}
+            onClick={() => handleVote("upvote")}
           />
 
           <div className="flex-center background-light700_dark400 min-w-[18px] rounded-sm p-1">
@@ -125,14 +130,14 @@ const Votes = ({
           <Image
             src={
               hasdownVoted
-                ? '/assets/icons/downvoted.svg'
-                : '/assets/icons/downvote.svg'
+                ? "/assets/icons/downvoted.svg"
+                : "/assets/icons/downvote.svg"
             }
             width={18}
             height={18}
             alt="downvote"
             className="cursor-pointer"
-            onClick={() => handleVote('downvote')}
+            onClick={() => handleVote("downvote")}
           />
 
           <div className="flex-center background-light700_dark400 min-w-[18px] rounded-sm p-1">
@@ -143,12 +148,12 @@ const Votes = ({
         </div>
       </div>
 
-      {type === 'Question' && (
+      {type === "Question" && (
         <Image
           src={
             hasSaved
-              ? '/assets/icons/star-filled.svg'
-              : '/assets/icons/star-red.svg'
+              ? "/assets/icons/star-filled.svg"
+              : "/assets/icons/star-red.svg"
           }
           width={18}
           height={18}
