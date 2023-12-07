@@ -38,8 +38,8 @@ const QuestionCard = ({
 }: QuestionProps) => {
   const showActionButtons = clerkId && clerkId === author.clerkId;
   return (
-    <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
-      <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
+    <div className="card-wrapper rounded-[10px] p-9 sm:px-11 ">
+      <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row ">
         <div>
           <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
             {getTimestamp(createdAt)}
@@ -65,7 +65,7 @@ const QuestionCard = ({
         ))}
       </div>
 
-      <div className="flex-between mt-6 w-full flex-wrap gap-3">
+      <div className="flex-between mt-6 w-full flex-wrap gap-3 ">
         <Metric
           imgUrl={author.picture}
           alt="user"

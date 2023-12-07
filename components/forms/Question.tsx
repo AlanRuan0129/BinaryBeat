@@ -119,7 +119,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-10"
+        className="flex w-full flex-col gap-10 "
       >
         <FormField
           control={form.control}
@@ -147,7 +147,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           control={form.control}
           name="explanation"
           render={({ field }) => (
-            <FormItem className="flex w-full flex-col gap-3">
+            <FormItem className="flex w-full flex-col gap-3 ">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Detailed explanation of your problem{" "}
                 <span className="text-primary-500">*</span>
