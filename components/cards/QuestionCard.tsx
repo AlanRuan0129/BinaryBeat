@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import React from 'react';
-import RenderTag from '../shared/RenderTag';
-import Metric from '../shared/Metric';
-import { formatAndDivideNumber, getTimestamp } from '@/lib/utils';
+import Link from "next/link";
+import React from "react";
+import RenderTag from "../shared/RenderTag";
+import Metric from "../shared/Metric";
+import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
 
 interface QuestionProps {
   _id: string;
@@ -20,9 +20,11 @@ interface QuestionProps {
   views: number;
   answers: Array<object>;
   createdAt: Date;
+  clerkId?: string;
 }
 
 const QuestionCard = ({
+  clerkId,
   _id,
   title,
   tags,
