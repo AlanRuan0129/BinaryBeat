@@ -1,11 +1,11 @@
-import { SignedIn, UserButton } from '@clerk/nextjs';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import Theme from './Theme';
-import MobileNav from './MobileNav';
-import GlobalSearch from '../search/GlobalSearch';
-import { Button } from '@/components/ui/button';
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import Theme from "./Theme";
+import MobileNav from "./MobileNav";
+import GlobalSearch from "../search/GlobalSearch";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
           Life <span className="text-primary-500">Puzzle</span>
         </p>
       </Link>
-      <GlobalSearch />
+      {/* <GlobalSearch /> */}
       <div className="flex-between gap-5">
         <Link href="/ask-question" className="flex justify-end">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 max-sm:hidden">
@@ -34,10 +34,10 @@ const Navbar = () => {
             afterSignOutUrl="/"
             appearance={{
               elements: {
-                avatarBox: 'h-10 w-10',
+                avatarBox: "h-10 w-10",
               },
               variables: {
-                colorPrimary: '#ff7000',
+                colorPrimary: "#ff7000",
               },
             }}
           />
