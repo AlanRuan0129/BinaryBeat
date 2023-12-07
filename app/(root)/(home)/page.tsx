@@ -1,16 +1,19 @@
-import QuestionCard from '@/components/cards/QuestionCard';
-import HomeFilters from '@/components/home/HomeFilters';
-import { ToggleGroupDemo } from '@/components/home/HomeMenu';
-import Filter from '@/components/shared/Filter';
-import NoResult from '@/components/shared/NoResult';
-import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
-import { Button } from '@/components/ui/button';
-import { HomePageFilters } from '@/constants/filters';
-import { getQuestions } from '@/lib/actions/question.action';
-import Link from 'next/link';
+import QuestionCard from "@/components/cards/QuestionCard";
+import HomeFilters from "@/components/home/HomeFilters";
+import { ToggleGroupDemo } from "@/components/home/HomeMenu";
+import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
+import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+import { Button } from "@/components/ui/button";
+import { HomePageFilters } from "@/constants/filters";
+import { getQuestions } from "@/lib/actions/question.action";
+import Link from "next/link";
+import { SearchParamsProps } from "@/types";
 
-export default async function Home() {
-  const result = await getQuestions({});
+export default async function Home({ searchParams }: SearchParamsProps) {
+  const result = await getQuestions({
+    searchQuery: searchParams.q,
+  });
 
   return (
     <>

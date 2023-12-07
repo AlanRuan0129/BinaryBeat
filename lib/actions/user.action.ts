@@ -99,10 +99,18 @@ export async function deleteUser(params: DeleteUserParams) {
 export async function getAllUsers(params: GetAllUsersParams) {
   try {
     connectToDatabase();
-
+    const { searchQuery } = params;
     // const { page = 1, pageSize = 20, filter, searchQuery } = params;
+    const query: FilterQuery<typeof User> = {};
 
-    const users = await User.find({}).sort({ createdAt: -1 });
+    if (searchQuery) {
+      query.$or = [
+        { name: { $regex: new RegExp(searchQuery, "i") } },
+        { username: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    const users = await User.find(query).sort({ createdAt: -1 });
 
     return { users };
   } catch (error) {
@@ -152,16 +160,7 @@ export async function getSavedQuestions(params: GetSavedQuestionsParams) {
   try {
     connectToDatabase();
 
-    const {
-      clerkId,
-      // eslint-disable-next-line no-unused-vars
-      page = 1,
-      // eslint-disable-next-line no-unused-vars
-      pageSize = 10,
-      // eslint-disable-next-line no-unused-vars
-      filter,
-      searchQuery,
-    } = params;
+    const { clerkId, searchQuery } = params;
 
     const query: FilterQuery<typeof Question> = searchQuery
       ? { title: { $regex: new RegExp(searchQuery, "i") } }

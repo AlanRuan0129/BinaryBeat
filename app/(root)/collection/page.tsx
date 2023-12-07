@@ -1,25 +1,25 @@
-import QuestionCard from '@/components/cards/QuestionCard';
-import Filter from '@/components/shared/Filter';
-import NoResult from '@/components/shared/NoResult';
-import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
-import { QuestionFilters } from '@/constants/filters';
-import { getSavedQuestions } from '@/lib/actions/user.action';
-import { auth } from '@clerk/nextjs';
+import QuestionCard from "@/components/cards/QuestionCard";
+import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
+import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+import { QuestionFilters } from "@/constants/filters";
+import { getSavedQuestions } from "@/lib/actions/user.action";
+import { auth } from "@clerk/nextjs";
+import { SearchParamsProps } from "@/types";
 
-export default async function Page() {
+export default async function Page({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
 
   if (!userId) return null;
 
   const result = await getSavedQuestions({
     clerkId: userId,
+    searchQuery: searchParams.q,
   });
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">
-        Saved Questions
-      </h1>
+      <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
 
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearchbar
