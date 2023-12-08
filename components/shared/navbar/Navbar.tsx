@@ -27,8 +27,7 @@ const Navbar = () => {
             BinaryBeat
           </p>
         </Link>
-      </nav>
-      <div className="fixed right-[12rem] z-50 mt-[1.2rem]">
+
         <div className="flex w-full  flex-row items-center justify-between font-spaceGrotesk  max-sm:hidden">
           {sidebarLinks.map((item) => {
             const isActive =
@@ -61,10 +60,8 @@ const Navbar = () => {
             );
           })}
         </div>
-        {/* <GlobalSearch /> */}
-      </div>
-      <div className="fixed right-[2rem] z-50 mt-[1.4rem]">
-        <div className="flex-between gap-5">
+
+        <div className="flex-between ml-[1rem] mr-[-2rem] gap-5">
           <SignedIn>
             <UserButton
               afterSignOutUrl="/"
@@ -80,7 +77,7 @@ const Navbar = () => {
           </SignedIn>
           <MobileNav />
         </div>
-      </div>
+      </nav>
     </>
   );
 };
