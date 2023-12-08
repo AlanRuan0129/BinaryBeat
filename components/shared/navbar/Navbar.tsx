@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex-between background-light900_dark200 fixed z-50 w-full items-center justify-between gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
+      <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/assets/images/owl.png"
@@ -23,12 +23,12 @@ const Navbar = () => {
             alt="BinaryBeat"
           />
 
-          <p className="h2-bold max-sm:h3-bold font-spaceGrotesk text-violet-500 dark:text-light-900">
+          <p className="h2-bold max-sm:h3-bold font-spaceGrotesk text-purple-500 dark:text-light-900">
             BinaryBeat
           </p>
         </Link>
 
-        <div className="flex w-full  flex-row items-center justify-between font-spaceGrotesk  max-sm:hidden">
+        <div className="flex flex-row items-center justify-center font-spaceGrotesk  max-sm:hidden">
           {sidebarLinks.map((item) => {
             const isActive =
               (pathname.includes(item.route) &&
@@ -47,7 +47,7 @@ const Navbar = () => {
               <Link
                 href={item.route}
                 key={item.label}
-                className="text-dark300_light900 ml-[9rem] flex p-3"
+                className="text-dark300_light900  mr-[3rem] flex p-3"
               >
                 <p
                   className={`${
