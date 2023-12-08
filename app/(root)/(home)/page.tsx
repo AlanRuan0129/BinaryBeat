@@ -1,16 +1,17 @@
-import QuestionCard from "@/components/cards/QuestionCard";
-import HomeFilters from "@/components/home/HomeFilters";
-import { ToggleGroupDemo } from "@/components/home/HomeMenu";
-import Filter from "@/components/shared/Filter";
-import NoResult from "@/components/shared/NoResult";
-import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { Button } from "@/components/ui/button";
-import { HomePageFilters } from "@/constants/filters";
-import { getQuestions } from "@/lib/actions/question.action";
-import Link from "next/link";
-import { SearchParamsProps } from "@/types";
+import QuestionCard from '@/components/cards/QuestionCard';
+import HomeFilters from '@/components/home/HomeFilters';
+import Filter from '@/components/shared/Filter';
+import NoResult from '@/components/shared/NoResult';
+import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
+import { Button } from '@/components/ui/button';
+import { HomePageFilters } from '@/constants/filters';
+import { getQuestions } from '@/lib/actions/question.action';
+import Link from 'next/link';
+import { SearchParamsProps } from '@/types';
 
-export default async function Home({ searchParams }: SearchParamsProps) {
+export default async function Home({
+  searchParams,
+}: SearchParamsProps) {
   const result = await getQuestions({
     searchQuery: searchParams.q,
     filter: searchParams.filter,
@@ -18,13 +19,16 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <div>
-        <ToggleGroupDemo />
-      </div>
+      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+        <h1 className="h1-bold font-spaceGrotesk text-purple-500 max-sm:hidden ">
+          All Questions
+        </h1>
 
-      <div className="flex w-full items-center justify-center max-sm:w-full sm:hidden">
-        <Link href="/ask-question" className="flex w-full">
-          <Button className="primary-gradient min-h-[46px] w-full px-4 py-3 !text-light-900">
+        <Link
+          href="/ask-question"
+          className="flex justify-end max-sm:w-full sm:min-h-[46px] sm:px-4 sm:py-3"
+        >
+          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 max-sm:w-full sm:min-h-[46px] sm:px-4 sm:py-3">
             Ask a Question
           </Button>
         </Link>

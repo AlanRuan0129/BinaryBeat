@@ -1,50 +1,87 @@
-import { SignedIn, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import Theme from "./Theme";
-import MobileNav from "./MobileNav";
-import GlobalSearch from "../search/GlobalSearch";
-import { Button } from "@/components/ui/button";
+'use client';
+
+import { SignedIn, UserButton, useAuth } from '@clerk/nextjs';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import MobileNav from './MobileNav';
+import { sidebarLinks } from '@/constants';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  const { userId } = useAuth();
+  const pathname = usePathname();
+
   return (
-    <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
-      <Link href="/" className="flex items-center gap-1">
-        <Image
-          src="/assets/images/site-logo.svg"
-          width={23}
-          height={23}
-          alt="LifePuzzle"
-        />
-        <p className="h2-bold max-sm:h3-bold font-spaceGrotesk text-dark-100 dark:text-light-900">
-          Life <span className="text-primary-500">Puzzle</span>
-        </p>
-      </Link>
-      {/* <GlobalSearch /> */}
-      <div className="flex-between gap-5">
-        <Link href="/ask-question" className="flex justify-end">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900 max-sm:hidden">
-            Ask a Question
-          </Button>
-        </Link>
-        <Theme />
-        <SignedIn>
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: {
-                avatarBox: "h-10 w-10",
-              },
-              variables: {
-                colorPrimary: "#ff7000",
-              },
-            }}
+    <>
+      <nav className="flex-between background-light900_dark200 fixed z-50 w-full items-center justify-between gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
+        <Link href="/" className="flex items-center gap-1">
+          <Image
+            src="/assets/images/owl.png"
+            width={45}
+            height={45}
+            alt="LifePuzzle"
           />
-        </SignedIn>
-        <MobileNav />
+
+          <p className="h2-bold max-sm:h3-bold font-spaceGrotesk text-violet-500 dark:text-light-900">
+            BinaryBeat
+          </p>
+        </Link>
+      </nav>
+      <div className="fixed right-[12rem] z-50 mt-[1.2rem]">
+        <div className="flex w-full  flex-row items-center justify-between font-spaceGrotesk  max-sm:hidden">
+          {sidebarLinks.map((item) => {
+            const isActive =
+              (pathname.includes(item.route) &&
+                item.route.length > 1) ||
+              pathname === item.route;
+
+            if (item.route === '/profile') {
+              if (userId) {
+                item.route = `${item.route}/${userId}`;
+              } else {
+                return null;
+              }
+            }
+
+            return (
+              <Link
+                href={item.route}
+                key={item.label}
+                className="text-dark300_light900 ml-[9rem] flex p-3"
+              >
+                <p
+                  className={`${
+                    isActive ? 'base-bold ' : 'base-medium '
+                  } `}
+                >
+                  {item.label}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+        {/* <GlobalSearch /> */}
       </div>
-    </nav>
+      <div className="fixed right-[2rem] z-50 mt-[1.4rem]">
+        <div className="flex-between gap-5">
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: 'h-10 w-10',
+                },
+                variables: {
+                  colorPrimary: '#ff7000',
+                },
+              }}
+            />
+          </SignedIn>
+          <MobileNav />
+        </div>
+      </div>
+    </>
   );
 };
 

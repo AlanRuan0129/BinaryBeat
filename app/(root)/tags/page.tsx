@@ -1,10 +1,10 @@
-import Filter from "@/components/shared/Filter";
-import NoResult from "@/components/shared/NoResult";
-import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { TagFilters } from "@/constants/filters";
-import { getAllTags } from "@/lib/actions/tag.actions";
-import Link from "next/link";
-import { SearchParamsProps } from "@/types";
+import Filter from '@/components/shared/Filter';
+import NoResult from '@/components/shared/NoResult';
+import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
+import { TagFilters } from '@/constants/filters';
+import { getAllTags } from '@/lib/actions/tag.actions';
+import Link from 'next/link';
+import { SearchParamsProps } from '@/types';
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllTags({
@@ -14,14 +14,16 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">All Tags</h1>
+      <h1 className="h1-bold font-spaceGrotesk text-purple-500">
+        All Courses
+      </h1>
 
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearchbar
           route="/tags"
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
-          placeholder="Search for tags"
+          placeholder="Search for courses"
           otherClasses="flex-1"
         />
 
@@ -47,9 +49,9 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
                 </div>
 
                 <p className="small-medium text-dark400_light500 mt-3.5">
-                  <span className="body-semibold primary-text-gradient mr-2.5">
+                  <span className="body-semibold mr-2.5 text-violet-500">
                     {tag.questions.length}+
-                  </span>{" "}
+                  </span>{' '}
                   Questions
                 </p>
               </article>
@@ -57,8 +59,8 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
           ))
         ) : (
           <NoResult
-            title="No Tags Found"
-            description="It looks like there are no tags found."
+            title="No Course Found"
+            description="It looks like there are no Courses found."
             link="/ask-question"
             linkTitle="Ask a question"
           />

@@ -30,11 +30,11 @@ body {
   }
 
   .btn-secondary {
-    @apply bg-light-800 dark:bg-dark-400 !important;
+    @apply bg-violet-200 dark:bg-dark-400 !important;
   }
 
   .btn-tertiary {
-    @apply bg-light-700 dark:bg-dark-300 !important;
+    @apply bg-violet-300 dark:bg-dark-300 !important;
   }
 
   .markdown {
@@ -42,7 +42,8 @@ body {
   }
 
   .primary-gradient {
-    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+    /* background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%); */
+    background: #9967ce;
   }
 
   .dark-gradient {

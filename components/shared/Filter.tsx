@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Select,
   SelectContent,
@@ -6,9 +6,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { formUrlQuery } from "@/lib/utils";
-import { useRouter, useSearchParams } from "next/navigation";
+} from '@/components/ui/select';
+import { formUrlQuery } from '@/lib/utils';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface Props {
   filters: {
@@ -19,16 +19,20 @@ interface Props {
   containerClasses?: string;
 }
 
-const Filter = ({ filters, otherClasses, containerClasses }: Props) => {
+const Filter = ({
+  filters,
+  otherClasses,
+  containerClasses,
+}: Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const paramFilter = searchParams.get("filter");
+  const paramFilter = searchParams.get('filter');
 
   const handleUpdateParams = (value: string) => {
     const newUrl = formUrlQuery({
       params: searchParams.toString(),
-      key: "filter",
+      key: 'filter',
       value,
     });
 

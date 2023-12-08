@@ -30,10 +30,11 @@ const SpaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'LifePuzzle',
-  description: 'Share your story with your buddies.',
+  title: 'BinaryBeat',
+  description:
+    'Join BinaryBeat, a dynamic hub for CS students. Dive into course discussions, professor reviews, and peer insights to enrich your computer science journey.',
   icons: {
-    icon: '/assets/images/site-logo.svg',
+    icon: '/assets/owl-logo.png',
   },
 };
 

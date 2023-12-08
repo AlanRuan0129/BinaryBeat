@@ -26,20 +26,20 @@ export const sidebarLinks: SidebarLink[] = [
     route: '/collection',
     label: 'Collections',
   },
-  {
-    imgURL: '/assets/icons/suitcase.svg',
-    route: '/jobs',
-    label: 'Find Jobs',
-  },
+  // {
+  //   imgURL: '/assets/icons/suitcase.svg',
+  //   route: '/jobs',
+  //   label: 'Find Jobs',
+  // },
   {
     imgURL: '/assets/icons/question.svg',
     route: '/ask-question',
-    label: 'Ask a question',
+    label: 'Ask',
   },
   {
     imgURL: '/assets/icons/tag.svg',
     route: '/tags',
-    label: 'Tags',
+    label: 'Course',
   },
   {
     imgURL: '/assets/icons/user.svg',

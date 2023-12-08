@@ -15,7 +15,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useRef, useState } from 'react';
 import { useTheme } from '@/context/ThemeProvider';
 import { Button } from '../ui/button';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { createAnswer } from '@/lib/actions/answer.action';
 import { usePathname } from 'next/navigation';
 
@@ -71,7 +71,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
           Write your answer here
         </h4>
 
-        <Button
+        {/* <Button
           className="light-border-2 btn gap-1.5 rounded-md px-4 py-2.5 text-primary-500 shadow-none dark:text-primary-500"
           onClick={() => {}}
         >
@@ -83,7 +83,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
             className="object-contain"
           />
           Generate an AI Answer
-        </Button>
+        </Button> */}
       </div>
 
       <Form {...form}>
