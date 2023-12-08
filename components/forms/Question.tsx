@@ -42,8 +42,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     questionDetails && JSON.parse(questionDetails || '');
 
   const groupedTags = parsedQuestionDetails?.tags.map(
-    // @ts-ignore
-    (tag) => tag.name
+    (tag: any) => tag.name
   );
 
   // 1. Define your form.

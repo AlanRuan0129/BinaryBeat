@@ -20,7 +20,7 @@ const Navbar = () => {
             src="/assets/images/owl.png"
             width={45}
             height={45}
-            alt="LifePuzzle"
+            alt="BinaryBeat"
           />
 
           <p className="h2-bold max-sm:h3-bold font-spaceGrotesk text-violet-500 dark:text-light-900">
