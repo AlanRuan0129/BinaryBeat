@@ -1,5 +1,4 @@
-import { formatAndDivideNumber } from "@/lib/utils";
-import Image from "next/image";
+import { formatAndDivideNumber } from '@/lib/utils';
 
 interface Props {
   totalQuestions: number;
@@ -17,13 +16,17 @@ const Stats = ({ totalQuestions, totalAnswers }: Props) => {
             <p className="paragraph-semibold text-dark200_light900">
               {formatAndDivideNumber(totalQuestions)}
             </p>
-            <p className="body-medium text-dark400_light700">Questions</p>
+            <p className="body-medium text-dark400_light700">
+              Questions
+            </p>
           </div>
           <div>
             <p className="paragraph-semibold text-dark200_light900">
               {formatAndDivideNumber(totalAnswers)}
             </p>
-            <p className="body-medium text-dark400_light700">Answers</p>
+            <p className="body-medium text-dark400_light700">
+              Answers
+            </p>
           </div>
         </div>
       </div>
