@@ -1,7 +1,11 @@
 ## Overview
 Welcome to BinaryBeat, a vibrant and interactive forum designed specifically for Computer Science students. Our platform offers a unique space for students to engage in discussions, ask questions, and share knowledge.
 
+https://binarybeat.vercel.app/
+
 ## Features
+
+<img width="655" alt="ff59d35deaf532994095dc7f177174e" src="https://github.com/AlanRuan0129/BinaryBeat/assets/109261504/9a0532b0-61d1-4c42-b2cb-f8e2801050ca">
 
 ### Ask Questions
 Have a doubt or need clarification on a topic? Post your questions and get answers from fellow students in the field.
