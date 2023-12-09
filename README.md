@@ -27,6 +27,9 @@ Easily find questions related to specific topics or areas of interest using tags
 First, run the development server:
 
 ```bash
+git clone https://github.com/Cheskaqiqi/BinaryBeat.git
+
+cd BinaryBeat
 
 npm install
 
