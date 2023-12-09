@@ -5,8 +5,6 @@ https://binarybeat.vercel.app/
 
 ## Features
 
-<img width="655" alt="ff59d35deaf532994095dc7f177174e" src="https://github.com/AlanRuan0129/BinaryBeat/assets/109261504/9a0532b0-61d1-4c42-b2cb-f8e2801050ca">
-
 ### Ask Questions
 Have a doubt or need clarification on a topic? Post your questions and get answers from fellow students in the field.
 
@@ -21,6 +19,8 @@ Engage with a community of like-minded individuals. Browse through profiles.
 
 ### Tag-Based Navigation
 Easily find questions related to specific topics or areas of interest using tags. This feature helps in filtering and discovering relevant content quickly.
+
+<img width="655" alt="ff59d35deaf532994095dc7f177174e" src="https://github.com/AlanRuan0129/BinaryBeat/assets/109261504/9a0532b0-61d1-4c42-b2cb-f8e2801050ca">
 
 ## Getting Started
 
